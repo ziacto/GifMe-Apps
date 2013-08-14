@@ -8,7 +8,7 @@
 
 		var self = this;
 		self.api = {
-			url: "http://166.78.184.106"
+			url: "http://xxx.xx.xxx.xxx"
 		}
 		self.user = null;
 		self.page = 0;

@@ -12,10 +12,7 @@
     "clipboardWrite",
     "clipboardRead",
     "http://880e1fc575bff25aff71-ff0ec5b5db438a9182fb3bcb68985c76.r30.cf1.rackcdn.com/",
-    "http://imgur.com/",
-    "http://166.78.184.106/",
-    "http://*/*",
-    "http://gifme.io/"
+    "http://imgur.com/"
   ],
   "browser_action": {
     "default_icon": "images/icon.png",

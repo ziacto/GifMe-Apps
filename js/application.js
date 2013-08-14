@@ -7,7 +7,7 @@
 var u = null;
 var _gifme = {
 	api: {
-		url: "http://166.78.184.106",
+		url: "http://xxx.xx.xxx.xxx",
 		user: check_user()
 	},
 	init: function() {
