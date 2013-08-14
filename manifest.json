@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+
+  "name": "GIF ME",
+  "description": "Quickly save those gifs for later use",
+  "version": "1.7",
+
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "storage",
+    "clipboardWrite",
+    "clipboardRead",
+    "http://880e1fc575bff25aff71-ff0ec5b5db438a9182fb3bcb68985c76.r30.cf1.rackcdn.com/",
+    "http://imgur.com/",
+    "http://166.78.184.106/",
+    "http://*/*",
+    "http://gifme.io/"
+  ],
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "images/icon_16.png",
+    "19": "images/icon_16.png",
+    "48": "images/icon_48.png",
+    "128": "images/icon_128.png"
+  },
+  "background": {
+    "persistent": false,
+    "scripts": ["js/libs/jQuery.js", "js/application.js"]
+  },
+  "content_security_policy": "default-src 'self' *; img-src 'self' *; script-src 'unsafe-eval';  object-src 'unsafe-eval';"
+}
