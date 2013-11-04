@@ -1,32 +1,25 @@
 {
-  "manifest_version": 2,
-
-  "name": "GIF ME",
-  "description": "Quickly save those gifs for later use",
-  "version": "1.7",
-
-  "permissions": [
-    "contextMenus",
-    "tabs",
-    "storage",
-    "clipboardWrite",
-    "clipboardRead",
-    "http://880e1fc575bff25aff71-ff0ec5b5db438a9182fb3bcb68985c76.r30.cf1.rackcdn.com/",
-    "http://imgur.com/"
-  ],
-  "browser_action": {
-    "default_icon": "images/icon.png",
-    "default_popup": "index.html"
-  },
-  "icons": {
-    "16": "images/icon_16.png",
-    "19": "images/icon_16.png",
-    "48": "images/icon_48.png",
-    "128": "images/icon_128.png"
-  },
-  "background": {
-    "persistent": false,
-    "scripts": ["js/libs/jQuery.js", "js/application.js"]
-  },
-  "content_security_policy": "default-src 'self' *; img-src 'self' *; script-src 'unsafe-eval';  object-src 'unsafe-eval';"
+   "background": {
+      "persistent": false,
+      "scripts": [ "js/libs/jQuery.js", "js/application.js" ]
+   },
+   "browser_action": {
+      "default_icon": "images/icon.png",
+      "default_popup": "index.html"
+   },
+   "content_security_policy": "default-src 'self' *; img-src 'self' *; script-src 'unsafe-eval' 'self';  object-src 'unsafe-eval';",
+   "description": "Quickly save those gifs for later use",
+   "icons": {
+      "128": "images/icon_128.png",
+      "16": "images/icon_16.png",
+      "19": "images/icon_16.png",
+      "48": "images/icon_48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDpsYPGHy37Rfu7oeSN3AvXBmmBWW47rPgMbmW1dt6XmsKmlCa3KfeP1aD7inSqZ53I6BFl0khe7kTr+hga9ytZDcvZciQqbWSCZM2+8gIPmVP/bz6WQfsSFmRuWtTEkm6Oj6k5b26SkT/jPmWFJO0/JL2x34Gv1UEJVEkXESACQIDAQAB",
+   "manifest_version": 2,
+   "name": "GIF ME",
+   "permissions": [ "contextMenus", "tabs", "storage", "clipboardWrite", "clipboardRead", "http://*/*" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.6.1",
+   "web_accessible_resources": [ "ga.js" ]
 }

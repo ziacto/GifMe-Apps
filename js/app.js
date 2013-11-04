@@ -1,210 +1,188 @@
-/////////////////////////////////////////
+/////////////////////////////////////////////////////
 //
 //	GIFME
+//	Author: Drew Dahlman ( www.drewdahlman.com )
+//	Version: 3.0
+//	Date: 08.19.2013
+//	
+//	Copyright 2013 Gifme.io
 //
-/////////////////////////////////////////
+/////////////////////////////////////////////////////
+
 (function() {
 	Application = function() {
-
 		var self = this;
-		self.api = {
-			url: "http://xxx.xx.xxx.xxx"
-		}
-		self.user = null;
-		self.page = 0;
-		self.limit = 10;
 
+		// Extend Object
+		self.nav;
+		self.api;
+		self.signup_signin;
+		self.user = null;
 		self.templates = [];
+		self.page = 0;
+		self.content;
+
+		var pages = 0;
 
 		self.init = function() {
+
+			// Extend Object
+			self.nav = new nav();
+			self.api = new api();
+			self.settings = new settings();
+			self.content = $("#content");
+
+			// Set Chrome Badge and Text
+			chrome.browserAction.setBadgeText({
+				'text': ''
+			});
+			chrome.browserAction.setIcon({
+				'path': 'images/icon_48.png'
+			}, function() {});
+
+			/////////////////////////////////////////
+			//
+			//	Start Things Off
+			//
+			/////////////////////////////////////////
 			if (self.user) {
-				self.send_request("/user/" + self.user + "/gifs/" + self.page, function(data) {
+				self.content.css({
+					'width': '100%'
+				});
+				self.nav.init();
+				self.api.get("/userbeta/" + self.user + "/gifs/" + self.page, function(data) {
+					$("#wrapper").scrollTop(0);
 					self.new_data(data);
 				});
+				
+				if (localStorage.getItem('v') != "2.6.1") {
+					$("#overlay_update").show();
+					$("#close_button").click(function() {
+						$("#overlay_update").remove();
+					});
+					localStorage.setItem('v', '2.6.1');
+				} else {
+					$("#overlay_update").remove();
+				}
 			} else {
-				$("#wrapper").html(self.templates.signup_signin());
-
-				$("html,body").height(280);
-				$("#account").click(function() {
-					$("#signup").hide();
-					$("html,body").height(210);
-				});
-
-				// sign up
-				$(".submit").click(function(event) {
-					event.preventDefault();
-					var email = $("#signup .email").val();
-					var pass = $("#signup .pass").val();
-
-					self.send_request("/user/create/" + email + "/" + pass, function(data) {
-						if (data == "501") {
-							$("#modal").html("Sorry that email is being used");
-							$("#modal").show();
-							setTimeout(function() {
-								$("#modal").fadeOut();
-							}, 500);
-						} else {
-							chrome.storage.sync.set({
-								'gifme_uuid': data.user.id
-							}, function(msg) {
-								$("html,body").height(600);
-								self.send_request("/user/" + data.user.id + "/gifs/" + self.page, function(data) {
-									self.new_data(data);
-								});
-								chrome.tabs.reload();
-							});
-
-						}
-
-					});
-
-				});
-
-				// sign in
-				$(".submit_b").click(function(event) {
-					event.preventDefault();
-					var email = $("#signin .email").val();
-					var pass = $("#signin .pass").val();
-
-					self.send_request("/user/login/" + email + "/" + pass, function(data) {
-						if (data == "401" || data == "404") {
-							$("#modal").html("Oops! Try Again.");
-							$("#modal").show();
-							setTimeout(function() {
-								$("#modal").fadeOut();
-							}, 500);
-						} else {
-							$("#wrapper").html("");
-							chrome.storage.sync.set({
-								'gifme_uuid': data
-							}, function(msg) {
-								$("html,body").height(600);
-								self.send_request("/user/" + data + "/gifs/" + self.page, function(data) {
-									self.new_data(data);
-								});
-								chrome.tabs.reload();
-							});
-
-						}
-
-					});
+				self.set_view(self.templates.signup_signin, null, function() {
+					self.signup_signin = new signup_signin();
+					self.signup_signin.init();
 				});
 			}
+		}
 
-			$("#search_form").submit(function() {
-				var term = $("#search").val();
-
-				if (term == "") {
-					self.send_request("/user/" + self.user + "/gifs/" + self.page, function(data) {
-						$("#wrapper").html("");
-						self.new_data(data);
-					});
-				} else {
-					self.send_request("/user/" + self.user + "/tags/" + term, function(data) {
-						$("#wrapper").html("");
-						self.new_data(data);
-					});
-				}
-
-				return false;
-			});
-
-			$("#search_box").click(function() {
-				$(this).width(139);
-				setTimeout(function() {
-					$("#search").show();
-					$("#search").focus();
-				}, 260);
-				$("#search").on('blur', function() {
-					$("#search").hide();
-					$("#search_box").width(15);
-				});
-			});
-
-			$("#logo").click(function() {
-				self.send_request("/user/" + self.user + "/gifs/" + self.page, function(data) {
-					$("#wrapper").html("");
-					self.new_data(data);
-				});
-			});
-
-			$("#settings_box").click(function() {
-				$("#wrapper").html(self.templates.settings());
-				$("#logout").click(function() {
-					chrome.storage.sync.remove('gifme_uuid', function() {
-						console.log("gone");
-						self.user = null;
-						self.init();
-					});
-					window.localStorage.removeItem('gifme_uuid')
-				});
-			});
+		self.set_view = function(view, data, callback) {
+			self.content.html(view(data));
+			callback();
 		}
 
 		self.new_data = function(data) {
+			var pageID = $(".clear").length + 1;
+			if (data.user.total != data.users.length) {
+				pages = Math.floor(data.user.total / 30);
+			} else {
+				pages = self.page;
+			}
+
 			if (data.users.length > 0) {
+
+				self.content.width('100%');
+
 				var d = data.users;
+				var i = 0;
 				_.each(d, function(gif) {
 					var _gif = self.templates.thumb(gif);
-					$("#wrapper").append(_gif);
+					self.content.append(_gif);
 
-					var _thumb = new thumb(_gif);
+					var _thumb = new thumb(_gif, i);
 					_thumb.init();
+
+					i = i + 50;
 				});
 
-				$(".copy_link").on('click', function() {
-					$(this).parent().parent().parent().find('.link').select();
-					document.execCommand('copy');
-					$("#modal").html("Copied!");
-					$("#modal").show();
-					setTimeout(function() {
-						$("#modal").fadeOut();
-					}, 500)
+				$(".copy_link,.tag_link").unbind('click');
+
+				$(".copy_link").bind('click', function() {
+					_gaq.push(['_trackEvent', 'copy_link', 'clicked']);
+					var id = $(this).parent().parent().parent().attr('id');
+					if (self.settings.shrink() == "true") {
+						var orig_url = $(this).parent().parent().parent().find('.link').val();
+						var link = $(this).parent().parent().parent().find('.link');
+
+						$.ajax({
+							url: "http://tinyurl.com/api-create.php?url=" + orig_url,
+							type: "GET",
+							dataType: "text",
+							success: function(data) {
+								link.val(data);
+								link.select();
+								document.execCommand('copy');
+								$("#modal").html("Copied!");
+								$("#modal").show();
+								setTimeout(function() {
+									$("#modal").fadeOut();
+								}, 500)
+
+							}
+						});
+					} else {
+						$(this).parent().parent().parent().find('.link').select();
+						document.execCommand('copy');
+						$("#modal").html("Copied!");
+						$("#modal").show();
+						setTimeout(function() {
+							$("#modal").fadeOut();
+						}, 500)
+					}
+
+					_gifme.api.silent("/user/" + _gifme.user + "/copy/" + id, function(data) {
+						console.log(data)
+					});
+
 				});
 
-				$(".tag_link").on('click', function() {
+				$(".tag_link").bind('click', function() {
+					_gaq.push(['_trackEvent', 'edit_page', 'clicked']);
 					var gif = $(this).parent().parent().parent().attr('id');
 					var tag = "";
 					var link = $(this).parent().parent().parent().data('url');
 
-					self.send_request("/user/" + self.user + "/tags", function(tags) {
-						_.find(tags, function(_tag, iterator) {
-							if (_tag.gif == gif) {
-								tag = _tag.tag;
-							}
-						});
-
-						var data = {
-							gif: gif,
-							link: link,
-							tag: tag
-						}
+					self.api.get("/gif/" + gif + "/details", function(data) {
 						var detail = self.templates.tag_page(data);
-						$("#wrapper").append(detail);
+						_gifme.content.prepend(detail);
 
 						var tagPage = new tag_page(data);
 					});
 				});
+
+				$("#content").append("<div class='clear' id='page_" + pageID + "' data-active='false' data-page='" + self.page + "'></div>");
+
+				console.log(self.page, pages)
+				$("#wrapper").scroll(function() {
+
+					if ($("#wrapper").scrollTop() + $("#wrapper").height() == $("#content").height()) {
+
+						if ($("#page_" + pageID).data('active') == false && self.page < pages) {
+							var page = $("#page_" + pageID).data('page');
+							$("#page_" + pageID).data('active', true);
+							self.add_page(page);
+						}
+
+					}
+
+				});
 			} else {
-				$("#wrapper").html("<div id='oh_no'>There's nothing here!<br/>Go collect some gifs!</div>");
+				_gifme.content.html("<div id='oh_no'>There's nothing here.<br/>Go collect more gifs!</div>")
 			}
+
 		}
 
-		self.send_request = function(request, callback) {
-			$("#modal").html("<span class='icon'>$</span>");
-			$("#modal").show();
-			$.ajax({
-				url: self.api.url + request,
-				type: "GET",
-				success: function(data) {
-					callback(data);
-					$("#modal").fadeOut();
-				}
+		self.add_page = function(page) {
+			self.page = (self.page + 1);
+			self.api.get("/userbeta/" + self.user + "/gifs/" + self.page, function(data) {
+				self.new_data(data);
 			});
-		}
-
-		self.save_image = function(info) {
-			return "YAY!";
 		}
 		return self;
 	}

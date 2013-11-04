@@ -8,22 +8,17 @@ html,body
 		color: #fff
 	overflow: hidden
 	font:
-		family: "Helvetica"
+		family: $reg
 		size: 12px
 	position: relative
 	color: $black
+	-webkit-font-smoothing: antialiased
+	font-smoothing: antialiased
+	line-height: 21px
 
-.icon
-	font:
-		family: $icon
-
-#oh_no
-	font:
-		size: 24px
-		weight: bold
-	text-align: center
-	margin:
-		top: 55px
+	.icon
+		font:
+			family: $icon
 
 h1,.stat
 	font:
@@ -32,66 +27,319 @@ h1,.stat
 	margin:
 		left: 5px
 
-header
-	height: 30px
-	background:
-		color: $pink
+.red
+	color: $pink
+
+.clear
 	position: relative
-	top: 0px
-	left: 0px
-	width: 100%
-	box-shadow: 0px 1px 5px 2px rgba(0,0,0,.3)
-	z-index: 1000
+	clear: both
 
-	#logo
-		height: 11px
-		width: 49px
+.image_stat
+	border: none !important
+	color: $pink !important
+
+#settings_edit
+	line-height: 35px !important
+	.icon
+		color: $pink !important
+
+	#options
+		margin:
+			top: 25px
+.default
+
+	header
+		color: rgba(0,0,0,.7)
+		height: 41px
+		width: 100%
 		background:
-			image: url(../images/logo.png)
-			repeat: no-repeat
-			size: 100%
-		position: absolute
-		top: 10px
-		left: 10px
-		cursor: pointer
-
-	#menu
-		position: absolute
-		right: 10px
-		width: 300px
-
-	#search_box,#settings_box
-		position: relative
-		top: 8px
-		right: 7px
-		color: #fff
-		width: 15px
-		-webkit-transition: all .25s
-		float: right
-		margin:
-			left: 5px
-		height: 17px
-		cursor: pointer
-
-		.icon
-			position: absolute
-			top: 1px
-
-	#search_form
-		display: inline-block
-		position: relative
-
-	#search
-		position: relative
-		border: none
-		background-color: rgba(255, 255, 255, 0)
+			color: #fff
 		border:
-			bottom: 1px solid #fff
-		outline: none
-		margin:
-			left: 20px
-		color: #fff
-		display: none
+			bottom: 1px solid $pink
+		position: relative
+
+		#logo
+			position: absolute
+			left: 0px
+			top: 1px
+			cursor: pointer
+			color: $pink
+
+			#g
+				font:
+					family: $bold
+					size: 15px
+				position: absolute
+				top: 9px
+				left: 10px
+				width: 60px
+
+			.icon
+				font:
+					size: 29px
+				position: absolute
+				top: 4px
+				left: 7px
+				display: none
+
+
+		#tools
+			position: absolute
+			right: 0px
+			display: none
+			
+			.tool_box
+				background:
+					color: rgba(255,255,255,.2)
+				display: inline-block
+				margin:
+					left: -2px
+				-webkit-transition: all .25s ease-in-out
+
+				.icon
+					position: relative
+					padding:
+						top: 11px
+						bottom: 11px
+						right: 10px
+						left: 10px
+					display: inline-block
+					font:
+						size: 17px
+					cursor: pointer
+
+				input
+					background: none
+					border: none
+					outline: none
+					margin:
+						right: 10px
+					display: none
+					color: $black
+					font:
+						family: $reg
+						size: 15px
+					position: relative
+					top: -2px
+
+			#search_box
+				width: 37px
+
+				.icon
+					font:
+						size: 16px
+					padding:
+						top: 12px
+						bottom: 11px
+					top: -1px
+
+			#menu_box
+
+				.icon
+					top: -1px
+	#menu
+		background:
+			color: $black
+		width: 100%
+		position: relative
+		overflow: hidden
+		height: 0px
+		-webkit-transition: all .35s ease-in-out
+		-webkit-transform: translate3d(0,0,0) translateZ(0)
+
+		.item
+			font:
+				family: $reg
+			color: #fff
+			padding:
+				bottom: 10px
+				top: 10px
+			display: block
+			border:
+				bottom: 1px solid rgba(255,255,255,.1)
+			width: 295px
+			margin: auto
+			position: relative
+			cursor: pointer
+			-webkit-transition: all .15s
+
+			.icon
+				position: absolute
+				right: 0px
+				top: 13px
+				-webkit-transition: all .15s
+
+			&:hover
+				color: $pink
+				.icon
+					color: $pink
+
+	#wrapper
+		height: 560px
+		width: 100%
+		position: relative
+		overflow-y: auto
+		overflow-x: hidden
+		box-shadow: 0px -1px 3px rgba(0,0,0,0)
+		-webkit-transition: all .15s
+
+		#content
+			width: 95%
+			margin: auto
+			position: relative
+			height: auto
+
+		input
+			border: none
+			border:
+				bottom: 1px solid rgba(0,0,0,.1)
+			font:
+				family: $reg
+				size: 13px
+			color: #808b8b
+			display: inline-block
+			outline: none
+			background: none
+			width: 100%
+			padding:
+				top: 5px
+				bottom: 5px
+
+		.box
+			height: 100px
+			width: 150px
+			float: left
+			position relative
+			display: table
+			position: relative
+			overflow: hidden
+			background:
+				color: $black
+				image: url(../images/loader.gif)
+				size: 20px
+				repeat: no-repeat
+				position: center
+			margin:
+				right: 5px
+				left: 5px
+				top: 5px
+				bottom: 3px
+			opacity: 0
+			-webkit-transition: all .35s
+
+			.animated
+				width: 150px
+				height: 100px
+				position: absolute
+				z-index: 1
+				overflow: hidden
+				cursor: pointer
+				background:
+					size: cover
+					position: center
+					repeat: no-repeat
+				display: none
+				-webkit-transform: translate3d(0,0,0) translateZ(0)
+
+			.static
+				height: 100%
+				width: 100%
+				z-index: 0
+				position: absolute
+				display: none
+
+			.info
+				background:
+					color: rgba(0,0,0,.7)
+				opacity: 0
+				height: 100%
+				width: 100%
+				position: absolute
+				display: table
+				vertical-align: middle
+				text:
+					align: center
+				z-index: 10
+
+				.links
+					display: table-cell
+					vertical-align: middle
+					width: 100%
+					height: 100%
+
+				.icon
+					font:
+						family: $icon
+					color: #fff
+					display: inline-block
+					padding: 10px
+					cursor: pointer
+
+					&:hover
+						color: $pink
+
+				input
+					font-size: 8px
+					bottom: -30px
+					position: absolute
+					width: 150px
+					padding:
+						top: 5px
+						bottom: 5px
+						left: 5px
+						right: 5px
+					background-color: rgba(0,0,0,1)
+					border: none
+					outline: none
+					color: #fff
+
+				&:hover
+					opacity: .7
+
+		.button
+			background:
+				color: #fff
+			color: $pink
+			font:
+				family: $reg
+			letter-spacing: 1px
+			cursor: pointer
+			padding:
+				top: 8px
+				bottom: 8px
+			border: none
+			border:
+				bottom: 1px solid $pink
+			margin:
+				top: 5px
+				bottom: 5px
+
+			&:hover
+				background:
+					color: $pink
+				color: #fff
+
+
+.menu_open	
+	#wrapper
+		box-shadow: 0px -1px 3px rgba(0,0,0,.7)
+	#menu
+		height: 169px
+
+form
+	display: inline
+p
+	padding:
+		top: 20px
+
+a
+	color: $pink
+	text:
+		decoration: none
+	display: block
+	margin:
+		top: 5px
+		bottom: 5px
 
 
 #modal
@@ -115,137 +363,15 @@ header
 		align: center
 	z-index: 10000
 
-#signup,#signin
-	width: 300px
-	margin: auto
-	position: relative
-	background:
-		color: #eaeaea
-	padding:
-		top: 15px
-		bottom: 15px
-		left: 15px
-		right: 15px
-	input
-		background:
-			color: rgba(255,255,255,.5)
-		border: none
-		outline: none
-		padding:
-			top: 5px
-			bottom: 5px
-			left: 5px
-			right: 5px
-		width: 275px
-		margin:
-			top: 5px
-	.submit,.submit_b
-		cursor: point
-		width: 90px
-		margin:
-			bottom: 15px
-		&:hover
-			background:
-				color: $pink
-			color: #fff
-
-a
-	color: $pink
-
-#wrapper
-	height: 570px
-	width: 320px
-	margin: auto
-	position: relative
-	overflow-y: scroll
-	overflow-x: hidden
-
-	.box
-		width: 150px
-		height: 100px
-		position: relative
-		float: left
-		margin: 5px
-		overflow: hidden
-		cursor: pointer
-		background:
-			color: #222
-			image: url(../images/loader.gif)
-			size: 10px
-			position: center
-			repeat: no-repeat
-		-webkit-transition: opacity .25s ease-in-out
-
-		.animated
-			width: 150px
-			height: 100px
-			position: relative
-			overflow: hidden
-			cursor: pointer
-			background:
-				color: #fff
-				size: cover
-				position: center
-				repeat: no-repeat
-			display: none
-
-		.info
-			background:
-				color: rgba(0,0,0,.7)
-			opacity: 0
-			height: 100%
-			width: 100%
-			position: absolute
-			display: table
-			vertical-align: middle
-			text:
-				align: center
-
-			.links
-				display: table-cell
-				vertical-align: middle
-				width: 100%
-				height: 100%
-
-			.icon
-				font:
-					family: $icon
-				color: #fff
-				display: inline-block
-				padding: 10px
-
-				&:hover
-					color: $pink
-
-			input
-				font-size: 8px
-				bottom: -30px
-				position: absolute
-				width: 150px
-				padding:
-					top: 5px
-					bottom: 5px
-					left: 5px
-					right: 5px
-				background-color: rgba(0,0,0,1)
-				border: none
-				outline: none
-				color: #fff
-
-			&:hover
-				opacity: .7
-	.copy
-		opacity: .55
-
-
-#tag_edit,#settings_edit
+#tag_edit,#settings_edit,#info_edit
 	height: 100%
 	width: 100%
 	position: fixed
+	top: 0px
 	background:
 		color: rgba(255,255,255,1)
 	z-index: 500
-	text-align: center
+	text-align: left
 
 	.gif_holder
 		width: 100%
@@ -253,36 +379,50 @@ a
 		background:
 			size: cover
 			position: center
-			image: url(http://i.imgur.com/l3JngW6.jpg)
+			color: $black
 
 	#options
 		position: relative
 		bottom: 0px
 
-	input
-		width: 335px
-		margin: auto
-		background:
-			color: #fff
-		color: $black
-		border: none
-		outline: none
-		padding:
-			top: 10px
-			bottom: 10px
-		&:hover
-			background:
-				color: $pink
-			color: #fff
 	.text
 		background:
 			color: #e7f6fc
 		color: #222
-		text-align: center
-		&:hover
-			background:
-				color: #e7f6fc
-			color: #222
+		text-align: left
+		border: none
+		border:
+			bottom: 1px solid rgba(0,0,0,.1)
+		padding:
+			bottom: 5px
+			top: 5px
+		position: relative
+		display: inline
+		width: 221px !important
+
+	.button
+		margin: 0px !important
+		padding:
+			top: 10px !important
+			bottom: 10px !important
+		border:
+			bottom: 1px solid $pink !important
+		position: relative
+		text:
+			align: left
+		width: 100%
+		&:before
+			content: attr(title)
+			position: relative
+			height: 15px
+			width: 15px
+			top: 0px
+			left: 0px
+			font:
+				family: $icon
+			margin:
+				right: 10px
+
 	.tag_title
 		padding:
 			top: 5px
@@ -300,9 +440,124 @@ a
 			margin:
 				right: 5px
 
+#settings_edit,#info_edit
+	position: relative
+	#settings,#stats
+		border:
+			bottom: 1px solid rgba(0,0,0,.1)
+		padding:
+			top: 15px
+			bottom: 15px
+		#shrink,#auto_tag
+			width: 25px
+		font:
+			size: 15px
+		width: 100%
+		margin: auto
+
+#info_edit
+	top: 25px
+	width: 100%
+	text:
+		align: center
+	p
+		margin: 0px
+		padding: 0px
+	a
+		display: inline
+	.button
+		padding: 15px
+		.red
+			color: #fff
+		border-radius: 5px
+
 .scrollbar-measure
 	width: 100px
 	height: 100px
 	overflow: scroll
 	position: absolute
 	top: -9999px
+
+#oh_no
+	line-height: 35px
+	color: $black
+	font:
+		size: 25px
+		family: $bold
+	width: 100%
+	text:
+		align: center
+	padding:
+		top: 55px
+
+.command
+	width: 75px
+	padding:
+		left: 5px
+	text:
+		align: left
+	display: inline-block
+	margin:
+		top: 10px
+
+#overlay_update
+	height: 100%
+	width: 100%
+	position: fixed
+	background:
+		color: rgba(0,0,0,.9)
+	z-index: 99999
+	text:
+		align: left
+		color: #fff
+	padding:
+		top: 25px
+	display: none
+
+	h1
+		font:
+			weight: normal
+			size: 15px
+			family: $bold
+		color: $pink
+		padding:
+			right: 25px
+			left: 25px
+	p
+		line-height: 21px
+		color: #fff
+		font:
+			size: 13px
+		padding:
+			right: 25px
+			left: 25px
+
+		a
+			display: inline
+
+		button
+			border: none
+			outline: none
+			background: none
+			color: #fff
+			margin: 0px !important
+			padding:
+				top: 10px !important
+				bottom: 10px !important
+			border:
+				bottom: 1px solid $pink !important
+			position: relative
+			text:
+				align: left
+			width: 100%
+			&:before
+				content: attr(title)
+				position: relative
+				height: 15px
+				width: 15px
+				top: 0px
+				left: 0px
+				font:
+					family: $icon
+				margin:
+					right: 10px

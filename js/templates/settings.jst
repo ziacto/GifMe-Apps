@@ -1,5 +1,23 @@
 <div id='settings_edit'>
+	<div id='settings'>
+		<b><span class='icon'>#</span> SETTINGS</b><br/>
+		<input type='checkbox' id='shrink' unchecked/> <b>Use link shortener</b>
+		<br/>
+		<input type='checkbox' id='auto_tag' unchecked/> <b>Auto Tag</b>
+	</div>
+	<div id='stats'>
+		<b><span class='icon'>.</span> STATS</b><br/>
+		<b><span class='icon'>)</span> Username:</b> <%= user %><br/>
+		<b><span class='icon'>l</span> Gifs:</b> <%= gifs %><br/>
+		<b><span class='icon'>t</span> Tags:</b> <%= tags %><br/>
+		<b><span class='icon'>(</span> Shares:</b> <%= shares %><br/>
+		<% if(url){ %>
+			<a href='http://gifme.io/u/<%= url %>/0' target='_blank'><input type='button' class='button' value='view profile' ></a>
+		<% } else { %>
+			<a href='http://gifme.io/user/<%= id %>/make_profile' target='_blank'><input type='button' class='button' value='create profile' ></a>
+		<% } %>
+	</div>
 	<div id='options'>
-		<input type='button' value='logout' id='logout'>
+		<input type='button' value='logout' id='logout' class='button'>
 	</div>
 </div>

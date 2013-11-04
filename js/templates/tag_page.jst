@@ -1,16 +1,12 @@
 <div id='tag_edit'>
-	<div class='gif_holder' data-image='<%= link %>'></div>
-	<!--<div class='tags'>
-		Add Tag:<br/>
-		<input type='text' class='text' id='gif_tag'>
-	</div>-->
+	<div class='gif_holder' data-image='<%= gif.link %>'></div>
 	<div id='options'>
-		<input type='text' class='text' value='<%= link %>' id='gif_link'>
-		<div class='tag_title'><span class='icon'>t</span> tags: ( use a space between tags )</div>
-		<input type='text' class='text' value='<%= tag %>' id='gif_tag'>
-		<div class='tag_title'><span class='icon'>#</span> menu</div>
-		<input type='button' value='save' id='save'>
-		<input type='button' value='close' id='cancel'>
-		<input type='button' value='delete' id='delete'>
+		<div class='command'><b>Original Url:</b></div><input type='text' class='text' value='<%= gif.link %>' id='gif_link'>
+		<div class='command'><b>Tags:</b></div><input type='text' class='text' value='<% if(tags[0]){ %><%= tags[0].tag %><% } else { %>use spaces between tags<% } %>' id='gif_tag'>
+		<div class='command'><b>Shared:</b></div><input type='text' class='text image_stat' value='<%= gif.copy %>' id='copy'>
+		<br/>
+		<button type='button' title='c' value='save' id='save' class='button'>save</button>
+		<button type='button' title='x' value='close' id='cancel' class='button'>cancel</button>
+		<button type='button' title='+' value='delete' id='delete' class='button'>delete</button>
 	</div>
 </div>

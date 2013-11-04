@@ -11,33 +11,78 @@
 		<!-- STYLES -->
 		<link rel='stylesheet' href='css/style.css'/>
 
-		<!-- JS -->
+		<!-- LIBS -->
 		<script src='js/libs/jQuery.js'></script>
 		<script src='js/libs/underscore.js'></script>
 		<script src='js/libs/imgur.js'></script>
-		<script src='js/thumb.js'></script>
-		<script src='js/tagpage.js'></script>
+		<script src='js/libs/ga.js'></script>
+
+		<!-- RESOURCES -->
+		<script src='js/resources/nav.js'></script>
+		<script src='js/resources/thumb.js'></script>
+		<script src='js/resources/settings.js'></script>
+		<script src='js/resources/detail.js'></script>
+		<script src='js/resources/api.js'></script>
+		<script src='js/resources/signup_signin.js'></script>
+		<script src='js/resources/tagpage.js'></script>
+
+		<!-- APP -->
 		<script src='js/app.js'></script>
 		<script src='js/main.js'></script>
 
 	</head>
-	<body>
-		<div id='modal'>Copyied!</div>
+	<body class='default'>
+		<div id='overlay_update'>
+			<h1>Thanks For Using GifMe!</h1>
+			<p>Hey there, a few quick notes on this update:</p>
+			<p>We've added the ability to 'auto tag' images you save! You can activate this in your settings, just check 'auto tag' and you will see a prompt after saving that asks for tags. this way you can more quickly tag and save images!</p>
+			<p>This feature was requested in the feedback forums, if you have a request please let us know!</p>
+			<p>If you have any feedback / bugs / comments let us know in the <a href='https://chrome.google.com/webstore/developer/support/aeblbmdigihnlnnmoejhagmpihfjdaab' target='_blank'>support forum</a></p>
+			<p><button title='x' id='close_button'>close</button></p>
+		</div>
+		<div id='modal'></div>
+
+		<!-- HEADER -->
 		<header>
-			<div id='logo'></div>
-			<div id='menus'>
-				<div id='search_box'>
-					<span class='icon'>!</span>
-					<form id='search_form'>
-						<input type='text' id='search'>
-					</form>
+			<div id='logo'>
+				<div id='g'>GIF ME</div>
+				<div id='refresh' class='icon'>%</div>
+			</div>
+
+			<div id='tools'>
+				<div id='search_box' class='tool_box'>
+					<div class='icon'>!</div>
+					<form id='search_form'><input type='text' id='search' /></form>
 				</div>
-				<div id='settings_box'>
-					<span class='icon'>#</span>
+				<div id='menu_box' class='tool_box'>
+					<div class='icon'>/</div>
 				</div>
 			</div>
 		</header>
-		<div id='wrapper'>
+		<!-- END HEADER -->
+
+		<!-- MENU -->
+		<div id='menu'>
+			<div class='item' id='go_to'>
+				<span class='icon'>0</span> Your Goto Gifs
+			</div>
+			<div class='item' id='settings'>
+				<span class='icon'>#</span> Settings
+			</div>
+			<a class='item' id='upload' href='http://imgur.com' target='_blank'>
+				<span class='icon'>-</span> Upload
+			</a>
+			<div class='item' id='about'>
+				<span class='icon'>(</span> About
+			</div>
 		</div>
+		<!-- END MENU -->
+
+		<!-- CONTENT WRAPPER -->
+		<div id='wrapper'>
+			<div id='content'>
+			</div>
+		</div>
+		<!-- END CONTENT WRAPPER -->
 	</body>
 </html>
