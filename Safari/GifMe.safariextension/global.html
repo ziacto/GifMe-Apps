@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- App -->
+        <script src='js/libs/jQuery.js'></script>
+        <script src='js/application.js'></script>
+
+        <script>
+        window._gifme = new Application();
+        var target_image = null;
+        safari.application.addEventListener("contextmenu", handleContextMenu, false);
+        safari.application.addEventListener("command", performCommand, false);
+
+		function handleContextMenu(event) {
+			console.log(safari.extension.popovers[0].contentWindow)
+			if (event.userInfo.tag === "IMG") {
+				target_image = event.userInfo.src;
+				event.contextMenu.appendContextMenuItem("save_image", "GifMe");
+			}
+		}
+		function performCommand(event){
+			console.log(event)
+			switch(event.command){
+
+				case "save_image":
+					_gifme.save_image(target_image);
+				break;
+				case "open_gifme":
+					safari.extension.popovers[0].contentWindow.reload();
+				break;
+			}
+		}
+		</script>
+    </head>
+    <body>
+    </body>
+</html>

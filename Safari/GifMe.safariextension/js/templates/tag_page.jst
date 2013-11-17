@@ -1,0 +1,12 @@
+<div id='tag_edit'>
+	<div class='gif_holder' data-image='<%= gif.link %>'></div>
+	<div id='options'>
+		<div class='command'><b>Original Url:</b></div><input type='text' class='text' value='<%= gif.link %>' id='gif_link'>
+		<div class='command'><b>Tags:</b></div><input type='text' class='text' value='<% if(tags[0]){ %><%= tags[0].tag %><% } else { %>use spaces between tags<% } %>' id='gif_tag'>
+		<div class='command'><b>Shared:</b></div><input type='text' class='text image_stat' value='<%= gif.copy %>' id='copy'>
+		<br/>
+		<button type='button' title='c' value='save' id='save' class='button'>save</button>
+		<button type='button' title='x' value='close' id='cancel' class='button'>cancel</button>
+		<button type='button' title='+' value='delete' id='delete' class='button'>delete</button>
+	</div>
+</div>

@@ -15,11 +15,10 @@
       "19": "images/icon_16.png",
       "48": "images/icon_48.png"
    },
-   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDpsYPGHy37Rfu7oeSN3AvXBmmBWW47rPgMbmW1dt6XmsKmlCa3KfeP1aD7inSqZ53I6BFl0khe7kTr+hga9ytZDcvZciQqbWSCZM2+8gIPmVP/bz6WQfsSFmRuWtTEkm6Oj6k5b26SkT/jPmWFJO0/JL2x34Gv1UEJVEkXESACQIDAQAB",
    "manifest_version": 2,
    "name": "GIF ME",
    "permissions": [ "contextMenus", "tabs", "storage", "clipboardWrite", "clipboardRead", "http://*/*" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "2.6.1",
+   "version": "2.6.2",
    "web_accessible_resources": [ "ga.js" ]
 }
