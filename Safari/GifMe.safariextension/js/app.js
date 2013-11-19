@@ -42,11 +42,12 @@
 					'width': '100%'
 				});
 				self.nav.init();
+
 				self.api.get("/userbeta/" + self.user + "/gifs/" + self.page, function(data) {
 					$("#wrapper").scrollTop(0);
 					self.new_data(data);
 				});
-				
+
 				if (localStorage.getItem('v') != "2.6.1") {
 					$("#overlay_update").show();
 					$("#close_button").click(function() {
@@ -66,6 +67,14 @@
 
 		self.set_view = function(view, data, callback) {
 			self.content.html(view(data));
+
+			$("a").bind('click', function(event) {
+				event.preventDefault();
+				// console.log(safari.self)
+				safari.extension.globalPage.contentWindow.openUrlInNewTab($(this).attr('href'))
+				// safari.self.tab.dispatchMessage('openUrlInNewTab', $(this).attr('href'));
+			});
+
 			callback();
 		}
 
@@ -93,7 +102,7 @@
 					i = i + 50;
 				});
 
-				$(".copy_link,.tag_link").unbind('click');
+				$(".copy_link,.tag_link,.box").unbind('click');
 
 				$(".copy_link").bind('click', function() {
 					_gaq.push(['_trackEvent', 'copy_link', 'clicked']);
@@ -148,6 +157,20 @@
 					});
 				});
 
+				$(".box").bind('click', function() {
+					_gaq.push(['_trackEvent', 'edit_page', 'clicked']);
+					var gif = $(this).attr('id');
+					var tag = "";
+					var link = $(this).data('url');
+
+					self.api.get("/gif/" + gif + "/details", function(data) {
+						var detail = self.templates.tag_page(data);
+						_gifme.content.prepend(detail);
+
+						var tagPage = new tag_page(data);
+					});
+				});
+
 				$("#content").append("<div class='clear' id='page_" + pageID + "' data-active='false' data-page='" + self.page + "'></div>");
 
 				console.log(self.page, pages)
@@ -164,6 +187,8 @@
 					}
 
 				});
+
+
 			} else {
 				_gifme.content.html("<div id='oh_no'>There's nothing here.<br/>Go collect more gifs!</div>")
 			}
@@ -175,6 +200,16 @@
 			self.api.get("/userbeta/" + self.user + "/gifs/" + self.page, function(data) {
 				self.new_data(data);
 			});
+		}
+
+		self.copied = function() {
+			$("#modal").show();
+			$("#modal").html("copied!");
+
+			setTimeout(function() {
+				$("#modal").fadeOut();
+			}, 1500)
+
 		}
 		return self;
 	}

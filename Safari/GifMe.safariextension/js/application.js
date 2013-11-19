@@ -4,7 +4,7 @@
 		var u = null;
 		var number = 0;
 		var downloading = 0;
-		var auto_tag = false;
+		var auto_tag = safari.extension.settings.auto_tag;
 
 		self.user = safari.extension.settings.gifme_uuid;
 		self.api = {
@@ -34,7 +34,7 @@
 					downloading = setInterval(function() {
 						var iconUri = safari.extension.baseURI + 'images/downloading/' + d + '.png';
 						safari.extension.toolbarItems[0].image = iconUri;
-						if (d > 14) {
+						if (d > 9) {
 							d = 0;
 						}
 						d = d + 1;

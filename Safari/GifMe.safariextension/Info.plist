@@ -32,14 +32,14 @@
 				<key>Identifier</key>
 				<string>gifme_app</string>
 				<key>Width</key>
-				<real>320</real>
+				<string></string>
 			</dict>
 		</array>
 		<key>Toolbar Items</key>
 		<array>
 			<dict>
 				<key>Command</key>
-				<string></string>
+				<string>open_gifme</string>
 				<key>Identifier</key>
 				<string>gifme</string>
 				<key>Image</key>

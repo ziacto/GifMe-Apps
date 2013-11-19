@@ -46,6 +46,16 @@ h1,.stat
 	#options
 		margin:
 			top: 25px
+
+.scrollbar
+	#tools
+		position: absolute
+		right: 10px !important
+		display: none
+	#menu .item
+		margin:
+			left: 12px !important
+
 .default
 
 	header
@@ -206,6 +216,7 @@ h1,.stat
 				bottom: 5px
 
 		.box
+			cursor: pointer
 			height: 100px
 			width: 150px
 			float: left
@@ -227,9 +238,21 @@ h1,.stat
 			opacity: 0
 			-webkit-transition: all .35s
 
+			&:hover
+				color: $pink
+
+				.icon
+					color: $pink !important
+
+			.copy
+				position: absolute
+				left: -999px
+
 			.animated
 				width: 150px
 				height: 100px
+				top: 0px
+				left: 0px
 				position: absolute
 				z-index: 1
 				overflow: hidden
@@ -247,6 +270,8 @@ h1,.stat
 				z-index: 0
 				position: absolute
 				display: none
+				top: 0px
+				left: 0px
 
 			.info
 				background:
@@ -277,6 +302,9 @@ h1,.stat
 
 					&:hover
 						color: $pink
+
+				.copy_link
+					display: none
 
 				input
 					font-size: 8px

@@ -26,10 +26,11 @@
 					$(this).remove();
 				});
 				$("html,body").height(600);
+				$("#modal").hide();
 			});
 
-			$(window).bind('keypress',function(event){
-				if(event.which == 13){
+			$(window).bind('keypress', function(event) {
+				if (event.which == 13) {
 					$("#save").trigger('click');
 				}
 			});
@@ -50,12 +51,14 @@
 					});
 					$("html,body").height(600);
 				}
+
 			});
 
 			$("#gif_tag").focus(function() {
 				if ($("#gif_tag").val().match(/use spaces between tags/i)) {
 					$("#gif_tag").val("");
 				}
+				$("#modal").hide();
 			});
 
 			$("#delete").click(function() {
@@ -67,9 +70,11 @@
 					$("#modal").fadeOut();
 					$("html,body").height(600);
 				});
-				
-			});
 
+			});
+			$("#gif_link").mouseup(function(e) {
+				e.preventDefault();
+			});
 			$("#gif_link").on('focus', function() {
 
 				if (_gifme.settings.shrink() == "true") {
@@ -83,24 +88,15 @@
 						success: function(data) {
 							link.val(data);
 							link.select();
-							document.execCommand('copy');
-							$("#modal").html("Copied!");
-							$("#modal").show();
-							setTimeout(function() {
-								$("#modal").fadeOut();
-							}, 500)
-
 						}
 					});
 				} else {
 					$(this).select();
-					document.execCommand('copy');
-					$("#modal").html("Copied!");
-					$("#modal").show();
-					setTimeout(function() {
-						$("#modal").fadeOut();
-					}, 500)
 				}
+
+				$("#modal").html("command + c<br/>to copy");
+				$("#modal").show();
+
 
 				// send stats
 				_gifme.api.silent("/user/" + _gifme.user + "/copy/" + self.data.gif.id, function(data) {

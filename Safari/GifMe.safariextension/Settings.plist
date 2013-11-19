@@ -10,5 +10,17 @@
 		<key>Secure</key>
 		<false/>
 	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<false/>
+		<key>Key</key>
+		<string>auto_tag</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<false/>
+		<key>Key</key>
+		<string>url_shrink</string>
+	</dict>
 </array>
 </plist>

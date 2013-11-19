@@ -11,6 +11,9 @@
         safari.application.addEventListener("contextmenu", handleContextMenu, false);
         safari.application.addEventListener("command", performCommand, false);
 
+        function openUrlInNewTab(url) {
+        	safari.application.activeBrowserWindow.openTab().url = url;
+		}
 		function handleContextMenu(event) {
 			console.log(safari.extension.popovers[0].contentWindow)
 			if (event.userInfo.tag === "IMG") {
@@ -26,7 +29,11 @@
 					_gifme.save_image(target_image);
 				break;
 				case "open_gifme":
-					safari.extension.popovers[0].contentWindow.reload();
+					console.log(safari.extension.popovers[0].contentWindow)
+					safari.extension.toolbarItems[0].showPopover();
+					safari.extension.popovers[0].contentWindow.location.reload()
+					// safari.extension.popovers[0].location.reload(true);
+					// safari.extension.popovers[0].contentWindow.App.init();
 				break;
 			}
 		}

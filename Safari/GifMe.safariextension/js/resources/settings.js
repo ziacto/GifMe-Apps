@@ -15,7 +15,7 @@
 
 		self.stats;
 		self.shrink = function() {
-			var shrink = window.localStorage.getItem('url_shrink')
+			var shrink = safari.extension.settings.url_shrink;
 			return shrink;
 		}
 
@@ -36,31 +36,25 @@
 
 				// logout
 				$("#logout").click(function() {
-
-					chrome.storage.sync.remove('gifme_uuid', function() {
-						_gifme.user = null;
-						_gifme.init();
-					});
+					safari.extension.settings.gifme_uuid = 0;
+					_gifme.user = null;
+					_gifme.init();
 					window.localStorage.removeItem('gifme_uuid')
 				});
 
 				// Shrink
 				$("#shrink").change(function() {
 					if (this.checked) {
-						window.localStorage.setItem('url_shrink', "true");
+						safari.extension.settings.url_shrink = true;
 					} else {
-						window.localStorage.setItem('url_shrink', "false");
+						safari.extension.settings.url_shrink = false;
 					}
 				});
 				$("#auto_tag").change(function() {
 					if (this.checked) {
-						chrome.storage.sync.set({
-							'auto_tag': true
-						}, function() {})
+						safari.extension.settings.auto_tag = true;
 					} else {
-						chrome.storage.sync.set({
-							'auto_tag': false
-						}, function() {})
+						safari.extension.settings.auto_tag = false;
 					}
 				});
 
@@ -70,14 +64,12 @@
 					$("#shrink").prop('checked', false);
 				}
 
-				chrome.storage.sync.get('auto_tag', function(data) {
-					console.log(data)
-					if (data.auto_tag == true) {
-						$("#auto_tag").prop('checked', true);
-					} else {
-						$("#auto_tag").prop('checked', false);
-					}
-				});
+
+				if (safari.extension.settings.auto_tag == true) {
+					$("#auto_tag").prop('checked', true);
+				} else {
+					$("#auto_tag").prop('checked', false);
+				}
 
 			});
 

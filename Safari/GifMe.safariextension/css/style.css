@@ -80,6 +80,13 @@ h1, .stat {
   #settings_edit #options {
     margin-top: 25px; }
 
+.scrollbar #tools {
+  position: absolute;
+  right: 10px !important;
+  display: none; }
+.scrollbar #menu .item {
+  margin-left: 12px !important; }
+
 .default header {
   color: rgba(0, 0, 0, 0.7);
   height: 41px;
@@ -199,6 +206,7 @@ h1, .stat {
     padding-top: 5px;
     padding-bottom: 5px; }
   .default #wrapper .box {
+    cursor: pointer;
     height: 100px;
     width: 150px;
     float: left;
@@ -216,9 +224,18 @@ h1, .stat {
     margin-bottom: 3px;
     opacity: 0;
     -webkit-transition: all 0.35s; }
+    .default #wrapper .box:hover {
+      color: #d82153; }
+      .default #wrapper .box:hover .icon {
+        color: #d82153 !important; }
+    .default #wrapper .box .copy {
+      position: absolute;
+      left: -999px; }
     .default #wrapper .box .animated {
       width: 150px;
       height: 100px;
+      top: 0px;
+      left: 0px;
       position: absolute;
       z-index: 1;
       overflow: hidden;
@@ -233,7 +250,9 @@ h1, .stat {
       width: 100%;
       z-index: 0;
       position: absolute;
-      display: none; }
+      display: none;
+      top: 0px;
+      left: 0px; }
     .default #wrapper .box .info {
       background-color: rgba(0, 0, 0, 0.7);
       opacity: 0;
@@ -257,6 +276,8 @@ h1, .stat {
         cursor: pointer; }
         .default #wrapper .box .info .icon:hover {
           color: #d82153; }
+      .default #wrapper .box .info .copy_link {
+        display: none; }
       .default #wrapper .box .info input {
         font-size: 8px;
         bottom: -30px;

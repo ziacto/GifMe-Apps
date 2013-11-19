@@ -31,7 +31,9 @@ $(function() {
 
 	// Delete the DIV 
 	document.body.removeChild(scrollDiv);
+	safari.extension.popovers[0].width = $("body,html,#wrapper").width() + scrollbarWidth;
 	$("body,html,#wrapper").width($("body,html,#wrapper").width() + scrollbarWidth);
+	
 
 	/////////////////////////////////////////
 	//
