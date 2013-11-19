@@ -18,7 +18,7 @@
 				alert("Oops! You need to be signed into GifMe to save this image!");
 
 			} else {
-				var u = self.user;
+				var u = safari.extension.settings.gifme_uuid;
 				var url = target_image.replace("http://", "");
 				url = url.replace("https://", "");
 				// var url = target_image;
