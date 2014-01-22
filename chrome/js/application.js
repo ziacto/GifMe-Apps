@@ -27,7 +27,7 @@ var _gifme = {
 		url = url.replace("https://", "");
 
 		if (!url.match(/jpg|gif|GIF|JPEG|JPG|png|PNG/i)) {
-			url = url + ".gif";
+			url = url.slice(0,-1) + ".gif";
 		}
 
 		if (u) {

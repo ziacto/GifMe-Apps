@@ -21,6 +21,22 @@
 				});
 			});
 
+			$(".gif_holder").append("<img class='src_img' src='"+self.data.gif.link+"'/>")
+			$('.src_img').hide().css({
+				'opacity':0,
+				'height': $(".gif_holder").height(),
+				'width':$(".gif_holder").width()
+			})
+
+			$(".gif_holder").mousedown(function(event){
+				$('.src_img').show()
+			})
+
+			$(".gif_holder").mouseup(function(event){
+				$('.src_img').hide()
+				
+			})
+
 			$("#cancel").click(function() {
 				$("#tag_edit").fadeOut(function() {
 					$(this).remove();

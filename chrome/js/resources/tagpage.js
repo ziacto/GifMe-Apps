@@ -21,6 +21,14 @@
 				});
 			});
 
+			$(".gif_holder").append("<img class='src_img' src='"+self.data.gif.link+"'/>")
+			$('.src_img').hide().css({
+				'opacity':0,
+				'height': $(".gif_holder").height(),
+				'width':$(".gif_holder").width()
+			})
+
+
 			$("#cancel").click(function() {
 				$("#tag_edit").fadeOut(function() {
 					$(this).remove();
@@ -51,6 +59,15 @@
 					$("html,body").height(600);
 				}
 			});
+
+			$(".gif_holder").mousedown(function(event){
+				$('.src_img').show()
+			})
+
+			$(".gif_holder").mouseup(function(event){
+				$('.src_img').hide()
+				
+			})
 
 			$("#gif_tag").focus(function() {
 				if ($("#gif_tag").val().match(/use spaces between tags/i)) {
