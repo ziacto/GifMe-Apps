@@ -55,13 +55,13 @@
 					self.new_data(data);
 				});
 				
-				if (localStorage.getItem('v') != "2.6.8") {
+				if (localStorage.getItem('v') != "2.6.9") {
 					$("#overlay_update").show();
 					$("#close_button").click(function() {
 						$("#overlay_update").remove();
 					});
-					localStorage.setItem('v', '2.6.8');
-					_gaq.push(['_trackEvent', 'updated', '2.6.8']);
+					localStorage.setItem('v', '2.6.9');
+					_gaq.push(['_trackEvent', 'updated', '2.6.9']);
 					
 				} else {
 					$("#overlay_update").remove();
