@@ -55,12 +55,15 @@ class GifDetailView extends Backbone.View
     )
 
     if GifMe.instance.app.settingsModel.get('short_url')
-      $.ajax({
-        url: "https://api-ssl.bitly.com/v3/shorten?access_token=7b0e006b7db97efcf9d4b362d101f5c4dfa39153&longUrl="+@data.gif.link
-        success: (data) =>
-          $("#detail_copy_link").val(data.data.url)
-          console.log data
-      }) 
+
+      if @data.gif.short_url
+        $("#detail_copy_link").val(@data.gif.short_url)
+      else
+        $.ajax({
+          url: "https://api-ssl.bitly.com/v3/shorten?access_token=7b0e006b7db97efcf9d4b362d101f5c4dfa39153&longUrl="+@data.gif.link
+          success: (data) =>
+            $("#detail_copy_link").val(data.data.url)
+        }) 
 
     #------------------------------------------------------------------------------
     #

@@ -27,11 +27,15 @@ class GifView extends Backbone.View
 			_gaq.push(['_trackEvent', 'edit_page', 'clicked'])
 
 		if GifMe.instance.app.settingsModel.get('short_url')
-			$.ajax({
-		        url: "https://api-ssl.bitly.com/v3/shorten?access_token=7b0e006b7db97efcf9d4b362d101f5c4dfa39153&longUrl="+@data.link
-		        success: (data) =>
-		          @template.children('.meta').children('input').val(data.data.url)
-		      }) 
+
+			if @data.short_url
+		        @template.children('.meta').children('input').val(@data.short_url)
+		    else
+				$.ajax({
+			        url: "https://api-ssl.bitly.com/v3/shorten?access_token=7b0e006b7db97efcf9d4b362d101f5c4dfa39153&longUrl="+@data.link
+			        success: (data) =>
+			          @template.children('.meta').children('input').val(data.data.url)
+			      }) 
 
 		@$copy.on 'click', () =>
 			@template.children('.meta').children('input').focus().select()

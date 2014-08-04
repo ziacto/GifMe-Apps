@@ -90,11 +90,11 @@ class AppView extends Backbone.View
   #------------------------------------------------------------------------------
   index: =>
 
-    if localStorage.getItem('version') != '3.0.9'
-      _gaq.push(['_trackEvent', 'updated', '3.0.9'])
+    if localStorage.getItem('version') != '3.1.0'
+      _gaq.push(['_trackEvent', 'updated', '3.1.0'])
 
       $("#overlay").show()
-      localStorage.setItem('version','3.0.9')
+      localStorage.setItem('version','3.1.0')
 
       $("#close-button").click( =>
         $("#overlay").hide()

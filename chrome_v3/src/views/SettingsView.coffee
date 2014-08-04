@@ -29,7 +29,7 @@ class SettingsView extends Backbone.View
     )
 
     $("#profile").click( =>
-      window.open("https://gifme.io/u/"+@model.get('user').url+"/0")
+      window.open("https://gifme.io/u/"+GifMe.instance.app.model.get('user').url+"/0")
     )
 
     $("#close-settings").click( =>
