@@ -1,0 +1,9 @@
+<div class='page'>
+	<h1>Welcome To GifMe</h1>
+	<p>GifMe is the best way to save, share and organize your gifs. It's free and easy to get started.
+	</p>
+	<br/><br/>
+	<a href='sign-in' class='button'>Sign In</a>
+	<br/>
+	<a href='sign-up' class='button'>Sign Up</a>
+</div>

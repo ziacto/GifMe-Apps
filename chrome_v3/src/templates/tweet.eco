@@ -1,0 +1,7 @@
+<div class='page left' id='tweet-page'>
+	<h1>Compose Tweet</h1>
+	<textarea id='tweet-box'>(via - @gifmeapp)</textarea>
+	<div id='characters'>140</div>
+	<a href='' class='button' id='tweet-it'>Tweet</a>
+	<a href='' class='button' id='tweet-it-nevermind'>Cancel</a>
+</div>

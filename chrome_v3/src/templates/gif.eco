@@ -1,0 +1,12 @@
+<div class='gif' data-static='<%= this.static.static.thumb.url %>' data-animated='<%= this.link %>' data-slug='<%= this.id %>'>
+	<div class='animated'></div>
+	<div class='overlay'>
+		<div class='options'>
+		<span class='icon-link'></span>
+		<span class='icon-maximize' data-slug='<%= this.id %>'></span>
+		</div>
+	</div>
+	<div class='meta'>
+		<input type='text' value='<%= this.link %>' />
+	</div>
+</div>

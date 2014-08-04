@@ -1,0 +1,11 @@
+<div class='page left'>
+<h1>Welcome!</h1>
+<p>To start your collection go find an image or gif and right click. You will see a GifMe option in the menu, click that and boom you've started!</p>
+<div id='intro-gif'></div>
+<br/>
+<p>You can then come back and tag your gif to make it easier to find as your library grows.</p>
+<br/>
+<p>Click the button below for a starter Image!</p>
+<br/>
+<a class='button external' href='http://i.gifme.io/gifme/_2bc268b871.gif' target="_blank">Get Started</a>
+</div>

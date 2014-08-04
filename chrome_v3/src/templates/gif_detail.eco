@@ -1,0 +1,16 @@
+<div id='gif_detail' class='page'>
+	<div id='detail_large' data-static='<%= this.gif.static.thumb.url %>' data-animated='<%= this.gif.link %>'>
+		<div id='detail_animated'></div>
+		<img id='hidden_gif' src='<%= this.gif.link %>'>
+	</div>
+	<div id='detail_options'>
+		<span class='icon-tag'></span><input type='text' id='detail_tags' value='<%= this.tags %>' placeholder='use spaces between tags'/>
+		<div class='button' id='detail_copy'><span class='icon-link'></span>copy</div>
+		<div class='button' id='tweet'><span class='icon-twitter'></span>tweet</div>
+		<div class='button' id='bad_thumbnail'><span class='icon-tools'></span>wrong thumbnail</div>
+		<div class='button' id='detail_save'><span class='icon-check'></span>save</div>
+		<div class='button' id='detail_cancel'><span class='icon-cross'></span>cancel</div>
+		<div class='button' id='detail_delete'><span class='icon-trash'></span>delete</div>
+		<input id='detail_copy_link' value='<%= this.gif.link %>' />
+	</div>
+</div>

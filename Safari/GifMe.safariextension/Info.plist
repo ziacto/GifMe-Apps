@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>GifMe</string>
 	<key>Builder Version</key>
-	<string>9537.71</string>
+	<string>10538.46</string>
 	<key>CFBundleDisplayName</key>
 	<string>GifMe</string>
 	<key>CFBundleIdentifier</key>
@@ -13,11 +13,15 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.6.7</string>
+	<string>2.7.0</string>
 	<key>CFBundleVersion</key>
-	<string>2.6.7</string>
+	<string>2.7.0</string>
 	<key>Chrome</key>
 	<dict>
+		<key>Context Menu Items</key>
+		<array>
+			<dict/>
+		</array>
 		<key>Database Quota</key>
 		<real>1048576</real>
 		<key>Global Page</key>
@@ -67,6 +71,8 @@
 	</dict>
 	<key>Description</key>
 	<string>Making saving, organizing and sharing gifs easier.</string>
+	<key>DeveloperIdentifier</key>
+	<string>87AA8SM8KR</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>

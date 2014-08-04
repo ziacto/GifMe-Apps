@@ -1,0 +1,6 @@
+<div class='page' id='tweet-overview'>
+	<h1>Twitter & GifMe</h1>
+	<p>You can now enable GifMe and Twitter to tweet directly from GifMe. Doing this will allow you to embed tweets in the timeline using Twitters new Gif service!</p>
+	<a href='https://gifme.io/profile/services' class='button' target='_blank'>Connect Twitter</a>
+	<a href='' id='nevermind-twitter' class='button' target=''>Nevermind</a>
+</div>

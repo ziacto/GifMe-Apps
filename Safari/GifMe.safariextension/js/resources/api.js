@@ -80,14 +80,14 @@
 		//	@callback:function
 		//
 		/////////////////////////////////////////
-		self.post = function(request, callback) {
+		self.post = function(request, data, callback) {
 			$("#modal").html("<span class='icon'>$</span>");
 			$("#modal").show();
 			var callback = callback;
 
 			$.ajax({
-				url: url,
-				data: request,
+				url: url+request,
+				data: data,
 				type: "POST",
 				success: function(data) {
 					callback(data);

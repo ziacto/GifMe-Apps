@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]> <html class="no-js weak" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>GifMe</title>
+	<meta name="author" content="Legwork Studio (http://www.legworkstudio.com)">
+
+	<!-- build:css styles/style.css -->
+	<link rel="stylesheet" href="css/app.css">
+	<!-- endbuild -->
+
+	</head>
+	<body>
+
+	<!-- TAKEOVER -->
+	<div id='overlay' class='page left'>
+		<h1>GifMe</h1>
+		<div id='version'>v3.0.9</div>
+		<p>
+			Welcome to GifMe 3.0.9! We have some exciting news in this update!
+		<br/><br/>
+		You can now upload directly from GifMe! <a href='https://gifme.io/upload' target='_blank'>Upload</a>.<br/>
+		<br/>
+		Short URLs have come back! Go to settings and actiate short urls.
+		<br/><br/>
+		<p>
+			<h1>What's new?</h1>
+			<ul>
+				<li>You can now choose to use Short URLS for links</li>
+				<li>GifMe Uploads</li>
+			</ul>
+		</p>
+		<div class='button' id='close-button'>close</div>
+	</div>
+
+	<!-- HEADER -->
+	<div id='header'>
+		<div id='logo'></div>
+		<div id='nav'>
+			<div id='open-search' class='button icon-open' title='Show results on web'></div>
+			<div class='icon-search button' id='nav-search-button'></div>
+			<div id='search-area'>
+				<input type='text' id='search' />
+			</div>
+			<div id='menu-button' class='button'>
+				<div class='menu-line' id='line-a'></div>
+				<div class='menu-line' id='line-b'></div>
+				<div class='menu-line' id='line-c'></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- MENU -->
+	<div id='menu' class=''>
+		<a href='#' id='upload' class='menu-button'>
+			<span class='icon-cloud'></span> Upload
+		</a>
+		<a href='#settings' class='menu-button'>
+			<span class='icon-user'></span> Settings
+		</a>
+		<a href='#about' class='menu-button'>
+			<span class='icon-info'></span> About
+		</a>
+	</div>
+
+	<!-- CONTENT -->
+	<div id='wrapper'>
+		<div class='content'>
+			<div class='clearfix'></div>
+		</div>
+	</div>
+
+	<!-- build:js js/vendor.min.js -->
+	<script src="vendor/jquery/dist/jquery.js"></script>
+	<script src="vendor/underscore/underscore.js"></script>
+	<script src="vendor/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
+	<script src="vendor/jquery-easing/jquery.easing.js"></script>
+	<script src="vendor/backbone/backbone-min.js"></script>
+	<script src="vendor/backbone.localStorage/backbone.localStorage-min.js"></script>
+	<script src="vendor/ga/ga.js"></script>
+	<script src="vendor/imgur/imgur.js"></script>
+	<!-- endbuild -->
+
+	<!-- build:js js/app.min.js -->
+	<script src="js/app.js"></script>
+	<script src="js/templates.js"></script>
+	<!-- endbuild -->
+
+	</body>
+</html>

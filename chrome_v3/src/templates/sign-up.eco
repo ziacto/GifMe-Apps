@@ -1,0 +1,9 @@
+<div class='page left'>
+	<h1><span class='icon-user'></span> Create An Account:</h1>
+	<p>You need to create an account to use GifMe. Once you have made an account you can access your library anywhere using our <a href='http://gifme.io/downloads' target='_blank'>apps</a>!</p>
+	<input type='text' id='name' placeholder='User Name' />
+	<input type='password' id='password' placeholder='Password' />
+	<a href='register' class='button'>Sign Up</a>
+	<br/>
+	<a href='welcome' class='button'>Back</a>
+</div>

@@ -40,8 +40,9 @@
 						d = d + 1;
 					}, 50);
 					$.ajax({
-						url: _gifme.api.url + "/gif/create/" + u + "/" + url,
-						type: "GET",
+						url: _gifme.api.url + "/gif/create/" + u,
+						type: "POST",
+						data: "url="+url,
 						crossDomain: true,
 						timeout: 10000,
 						success: function(msg) {

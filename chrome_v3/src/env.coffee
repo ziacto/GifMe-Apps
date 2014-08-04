@@ -1,0 +1,1 @@
+window.GifMe = window.GifMe || {}

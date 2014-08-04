@@ -1,0 +1,8 @@
+<div class='page left'>
+	<h1><span class='icon-user'></span> Sign In:</h1>
+	<input type='text' id='name' placeholder='User Name' />
+	<input type='password' id='password' placeholder='Password' />
+	<a href='login' class='button'>Sign In</a>
+	<a href='http://gifme.io/password' class='button external' target="_blank">Forgot Password</a>
+	<a href='welcome' class='button'>Back</a>
+</div>

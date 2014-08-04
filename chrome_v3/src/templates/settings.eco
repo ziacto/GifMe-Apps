@@ -1,0 +1,22 @@
+<div class='page left'>
+	<h1>Settings</h1>
+
+	<div class='setting'>
+		<div class='label'>Use Short URLS:</div>
+		<div class='switch' id='shorten'>
+			<div class='option'>
+				no
+			</div>
+			<div class='option'>
+				yes
+			</div>
+			<div class='switch-knob'></div>
+		</div>
+	</div>
+
+	<br/>
+	<div class='button' id='profile'>profile</div>
+	<div class='button' id='logout'>logout</div>
+	<div class='button' id='close-settings'>close</div>
+
+</div>

@@ -1,0 +1,3 @@
+<div class='tooltip <%= this.el %>'>
+	<%= this.message %>
+</div>

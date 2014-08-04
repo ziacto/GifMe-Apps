@@ -55,7 +55,7 @@
 				var tag = $("#gif_tag").val();
 
 				if (tag != "tag" && tag != "" && tag != "use spaces between tags") {
-					_gifme.api.get("/user/" + _gifme.user + "/tag/" + self.data.gif.id + "/" + tag, function(data) {
+					_gifme.api.post("/user/" + _gifme.user + "/tag/", "gif="+self.data.gif.id+"&tag="+encodeURIComponent(tag), function(data) {
 						$("#tag_edit").fadeOut(function() {
 							$(this).remove();
 						});
@@ -67,7 +67,6 @@
 					});
 					$("html,body").height(600);
 				}
-
 			});
 
 			$("#gif_tag").focus(function() {
@@ -86,7 +85,7 @@
 					$("#modal").fadeOut();
 					$("html,body").height(600);
 				});
-
+				
 			});
 			$("#gif_link").mouseup(function(e) {
 				e.preventDefault();
